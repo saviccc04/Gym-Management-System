@@ -2,14 +2,6 @@
   require_once 'classes/Database.php';
 
   $db = new Database();
-
-  if($db->getConnection()) {
-    echo "radi";
-  } else {
-    echo "ne radi";
-  }
-  
-  var_dump($db);
 ?>
 
 <!doctype html>
