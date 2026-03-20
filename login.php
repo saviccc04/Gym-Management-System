@@ -2,6 +2,8 @@
   require_once 'classes/Database.php';
 
   $db = new Database();
+
+  var_dump($db);
 ?>
 
 <!doctype html>
