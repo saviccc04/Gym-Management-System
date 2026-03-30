@@ -17,4 +17,8 @@
         header('Location: ' . $location);
         exit;
     }
+
+    function isPostRequest() {
+        if($_SERVER['REQUEST_METHOD'] === 'POST') return true;
+    }
 ?>

@@ -7,11 +7,11 @@
     redirect('admin.php');
   }
 
-  if($_SERVER['REQUEST_METHOD'] === 'POST') {
+  if(isPostRequest()) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $admin = new Admin;
+    $admin = new Admin();
     
     if($admin->login($username, $password)) {
       redirect('admin.php');       

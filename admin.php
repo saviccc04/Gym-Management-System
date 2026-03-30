@@ -5,6 +5,9 @@
   if(!isset($_SESSION['logged_in'])) {
     redirect('login.php');
   }
+
+  $member = new Member();
+  $members = $member->getAll();
 ?>
     <form class="container-fluid" method="post" action="logout.php" style="position: relative;">
       <button type="submit" class="btn btn-secondary" style="position: absolute; right: 0; bottom: 0;">Logout</button>
@@ -34,45 +37,29 @@
         </thead>
 
         <tbody>
-          <tr class="mb-5">
-            <td>Nikola</td>
-            <td>Savic</td>
-            <td>nikola1@gmail.com</td>
-            <td>065403283</td>
-            <td>Djuka</td>
-            <td>
-              <img
-                style="width: 50px"
-                class="img-fluid img-thumbnail"
-                src="uploads/Screenshot (35).png"
-                alt="Person Photo"
-              />
-            </td>
-            <td>30 Sessions Plan</td>
-            <td><a href="#">Access Card</a></td>
-            <td>10/10/2026</td>
-            <td><button class="btn btn-danger p-1">Delete</button></td>
-          </tr>
-
-          <tr>
-            <td>Nikola</td>
-            <td>Savic</td>
-            <td>nikola1@gmail.com</td>
-            <td>065403283</td>
-            <td>Djuka</td>
-            <td>
-              <img
-                style="width: 50px"
-                class="img-fluid img-thumbnail"
-                src="uploads/Screenshot (35).png"
-                alt="Person Photo"
-              />
-            </td>
-            <td>30 Sessions Plan</td>
-            <td><a href="#">Access Card</a></td>
-            <td>10/10/2026</td>
-            <td><button class="btn btn-danger p-1">Delete</button></td>
-          </tr>
+          <?php if(isset($members)): ?>
+            <?php foreach($members as $row): ?>
+              <tr class="mb-5">
+                <td><?php echo $row->first_name; ?></td>
+                <td><?php echo $row->last_name; ?></td>
+                <td><?php echo $row->email; ?></td>
+                <td><?php echo $row->phone_number; ?></td>
+                <td><?php echo $row->trainer_id; ?></td>
+                <td>
+                  <img
+                    style="width: 50px"
+                    class="img-fluid img-thumbnail"
+                    src="uploads/Screenshot (35).png"
+                    alt="Person Photo"
+                  />
+                </td>
+                <td>30 Sessions Plan</td>
+                <td><a href="#">Access Card</a></td>
+                <td><?php echo $row->created_at; ?></td>
+                <td><button class="btn btn-danger p-1">Delete</button></td>
+              </tr>
+            <?php endforeach; ?>
+          <?php endif; ?>
         </tbody>
       </table>
 
