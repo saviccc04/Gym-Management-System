@@ -1,9 +1,6 @@
 <?php
-  require_once 'classes/Database.php';
-
-  $db = new Database();
-
-  var_dump($db);
+  require_once 'init.php';
+  require_once base_path("classes/Database.php");
 ?>
 
 <!doctype html>
