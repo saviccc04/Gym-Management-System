@@ -1,27 +1,26 @@
 <?php
   require_once 'init.php';
-  require_once base_path("classes/Database.php");
+  require_once base_path("classes/Admin.php");
+  include base_path('partials/header.php');
+
+  if($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    $admin = new Admin;
+    
+    if($admin->login($username, $password)) {
+      redirect('admin.php');       
+    } else {
+      $error = 'Invalid username or password';
+    }
+  }
 ?>
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <title>Login</title>
-  </head>
-  <body>
     <div
       class="container vh-100 d-flex align-items-center justify-content-center"
     >
-      <form action="" class="w-25">
+      <form action="" class="w-25" method="post">
         <div class="mb-3 mt-3">
           <label for="username" class="form-label">Username:</label>
           <input class="form-control" type="text" name="username" required />
@@ -40,5 +39,7 @@
         <button type="submit" class="btn btn-primary">Login</button>
       </form>
     </div>
-  </body>
-</html>
+
+<?php
+  include base_path('partials/footer.php');
+?>

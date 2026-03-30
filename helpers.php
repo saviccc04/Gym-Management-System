@@ -12,4 +12,9 @@
 
         return $rootPath . DIRECTORY_SEPARATOR . ltrim($path, DIRECTORY_SEPARATOR);
     }
+
+    function redirect($location) {
+        header('Location: ' . $location);
+        exit;
+    }
 ?>
