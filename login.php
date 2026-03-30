@@ -3,6 +3,10 @@
   require_once base_path("classes/Admin.php");
   include base_path('partials/header.php');
 
+  if(isset($_SESSION['logged_in'])) {
+    redirect('admin.php');
+  }
+
   if($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];

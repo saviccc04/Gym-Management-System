@@ -1,7 +1,15 @@
 <?php 
   require_once 'init.php';
   include base_path("partials/admin/header.php");
+
+  if(!isset($_SESSION['logged_in'])) {
+    redirect('login.php');
+  }
 ?>
+    <form class="container-fluid" method="post" action="logout.php" style="position: relative;">
+      <button type="submit" class="btn btn-secondary" style="position: absolute; right: 0; bottom: 0;">Logout</button>
+    </form>
+
     <div class="container">
       <h2 class="h2 mb-4 mt-5">Members List</h2>
 
