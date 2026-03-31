@@ -7,7 +7,10 @@
   }
 
   $member = new Member();
+  $trainer = new Trainer();
+
   $members = $member->getAll();
+  $trainers = $trainer->getAll();
 ?>
     <form class="container-fluid" method="post" action="logout.php" style="position: relative;">
       <button type="submit" class="btn btn-secondary" style="position: absolute; right: 0; bottom: 0;">Logout</button>
@@ -81,13 +84,17 @@
         </thead>
 
         <tbody>
-          <tr class="mb-5">
-            <td>Djuka</td>
-            <td>Djukic</td>
-            <td>djuka@gmail.com</td>
-            <td>065403283</td>
-            <td>10/10/2026</td>
-          </tr>
+          <?php if(isset($trainers)): ?>
+            <?php foreach($trainers as $row): ?>
+              <tr class="mb-5">
+                <td><?php echo $row->first_name; ?></td>
+                <td><?php echo $row->last_name; ?></td>
+                <td><?php echo $row->email; ?></td>
+                <td><?php echo $row->phone_number; ?></td>
+                <td><?php echo $row->created_at; ?></td>
+              </tr>
+            <?php endforeach; ?>
+          <?php endif; ?>
         </tbody>
       </table>
     </div>
