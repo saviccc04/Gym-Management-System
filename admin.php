@@ -11,6 +11,14 @@
 
   $members = $member->getAll();
   $trainers = $trainer->getAll();
+
+  if(isPostRequest()) {
+    $first_name = $_POST['first_name'];
+    $last_name = $_POST['last_name'];
+    $email = $_POST['email'];
+    $phone_number = $_POST['phone_number'];
+    $image = $_POST['image'];
+  }
 ?>
     <form class="container-fluid" method="post" action="logout.php" style="position: relative;">
       <button type="submit" class="btn btn-secondary" style="position: absolute; right: 0; bottom: 0;">Logout</button>
