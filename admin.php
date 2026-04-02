@@ -18,6 +18,8 @@
     $email = $_POST['email'];
     $phone_number = $_POST['phone_number'];
     $image = $_POST['image'];
+
+    var_dump($first_name);
   }
 ?>
     <form class="container-fluid" method="post" action="logout.php" style="position: relative;">
